@@ -1,0 +1,48 @@
+{
+  "name": "School Website",
+  "short_name": "School",
+  "description": "School Management System",
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay"],
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "scope": "/",
+  "categories": ["education", "productivity"],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Student Portal",
+      "url": "/student",
+      "description": "Access Student Portal"
+    },
+    {
+      "name": "Teacher Portal",
+      "url": "/teacher",
+      "description": "Access Teacher Portal"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/images/logo-main.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo-main.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/school.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "School Homepage"
+    }
+  ]
+}

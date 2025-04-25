@@ -1,30 +1,118 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Fotter from '../Components/Fotter';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import SEE from '../hero-images/see-2081.png'
+import Office from '../hero-images/office.png'
+import Teacher from '../hero-images/teachers.png'
 
 
 const Home = () => {
   return (
     <>
-      <div className="relative z-[-2] bg-cover bg-center h-screen" style={{ backgroundImage: "url('uploads/hero-backend.jpg')" }}>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">विद्यालयमा स्वागत छ</h1>
-            <p className="text-lg md:text-2xl mb-8">नेपालको अग्रणी शैक्षिक संस्था</p>
-          </div>
+   {/* Image Slider Section */}
+<section className="relative z-10">
+  <Swiper
+    modules={[Navigation, Pagination, Autoplay]}
+    spaceBetween={0}
+    slidesPerView={1}
+    navigation
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 4000 }}
+    loop={true}
+    className="w-full h-[90vh]"
+  >
+    <SwiperSlide>
+      <div className="relative w-full h-full">
+        <img
+          src= {SEE}
+          alt="Slide 1"
+          className="w-full h-[90vh] object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <h2 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
+            Welcome to a Future of Learning
+          </h2>
         </div>
       </div>
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <div className="relative w-full h-full">
+        <img
+          src= {Office}
+          alt="Slide 2"
+          className="w-full h-[90vh] object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <h2 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
+            Empowering Students with Knowledge
+          </h2>
+        </div>
+      </div>
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <div className="relative w-full h-full">
+        <img
+          src= {Teacher}
+          alt="Slide 3"
+          className="w-full h-[90vh] object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <h2 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
+            Building Tomorrow’s Leaders
+          </h2>
+        </div>
+      </div>
+    </SwiperSlide>
+  </Swiper>
+</section>
+
+      {/* Image Highlights */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Explore Our Campus</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img src="uploads/school1.jpg" alt="School Building" className="w-full h-64 object-cover" />
+              <div className="p-4">
+                <h3 className="font-semibold text-xl">Modern School Infrastructure</h3>
+              </div>
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img src="uploads/school2.jpg" alt="Library" className="w-full h-64 object-cover" />
+              <div className="p-4">
+                <h3 className="font-semibold text-xl">A Well-Equipped Library for Curious Minds</h3>
+              </div>
+            </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <img src="uploads/school3.jpg" alt="Playground" className="w-full h-64 object-cover" />
+              <div className="p-4">
+                <h3 className="font-semibold text-xl">Spacious Playground for Physical Growth</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Welcome Section */}
       <div className="bg-white text-gray-800">
         <section className="py-16 bg-gray-100">
           <div className="container mx-auto text-center px-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Welcome to Badimalika Secondary School </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Welcome to Badimalika Secondary School</h2>
             <p className="text-lg md:text-xl leading-relaxed">
               Shaping young minds with quality education and holistic development since 2032 B.S.
             </p>
           </div>
         </section>
 
+        {/* Why Choose Us */}
         <section className="py-16">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-12">Why Choose Us?</h2>
@@ -51,6 +139,7 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Programs Offered */}
         <section className="py-16">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-12">Programs Offered</h2>
@@ -72,6 +161,7 @@ const Home = () => {
         </section>
       </div>
 
+      {/* Achievements */}
       <section className="py-16 bg-white">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Our Achievements</h2>
@@ -92,6 +182,8 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Footer */}
+      <Fotter />
     </>
   );
 };

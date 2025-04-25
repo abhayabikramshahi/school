@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import Home from "./Pages/Home"
 import Navbar from "./Components/Navbar"
 import Curriculum from "./Pages/Curriculum"
@@ -8,12 +8,20 @@ import Sports from "./Pages/Sports"
 import AboutUs from "./Pages/AboutUs"
 import ContactUs from "./Pages/ContactUs"
 import Fotter from "./Components/Fotter"
+import StudentPortal from "./Pages/StudentPortal"
+import TeacherPortal from "./Pages/TeacherPortal"
+import Blog from "./Pages/Blog"
+import BlogPost from "./Pages/BlogPost"
+import AdminPanel from "./Pages/AdminPanel"
 
 function App() {
+  const location = useLocation();
+  const isPortalPage = ['/student-portal', '/teacher-portal', '/admin'].includes(location.pathname) ||
+                      location.pathname.startsWith('/admin/');
 
   return (
     <>
-      <Navbar />
+      {!isPortalPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/academics"  >
@@ -32,8 +40,15 @@ function App() {
         </Route>
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/Contact" element={<ContactUs />} />
+        <Route path="/student-portal" element={<StudentPortal />} />
+        <Route path="/teacher-portal" element={<TeacherPortal />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/admin/*" element={<AdminPanel />} />
         <Route path="/fotter" element={<Fotter />} />
+
       </Routes>
+      {!isPortalPage && <Fotter />}
     </>
   )
 }

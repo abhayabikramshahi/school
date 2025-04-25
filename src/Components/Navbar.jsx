@@ -1,117 +1,217 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const toggleMobileMenu = () => {
-        const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenu.classList.toggle("hidden");
-    };
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
-    const toggleDropdown = (dropdownId) => {
-        const dropdown = document.getElementById(dropdownId);
-        dropdown.classList.toggle("hidden");
-    };
+  const toggleMobileMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-    return (
-        <nav className="bg-white shadow-md z-10">
-            <div className="flex justify-around items-center py-4">
-                <div className="flex-shrink-0">
-                    <a href="#" className="text-2xl font-extrabold text-blue-600">
-                        Badimalika School
-                    </a>
-                </div>
-                <div className="hidden md:flex items-center space-x-6">
-                    <div className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M2.003 5.884L10 10.882l7.997-4.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 5-8-5V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                        </svg>
-                        <span>info@badimalikasecschool.com</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm12 4H6v2h8V9z" clipRule="evenodd" />
-                        </svg>
-                        <span>+977-9758900824</span>
-                    </div>
-                </div>
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleAdminLogin = (e) => {
+    e.preventDefault();
+    const username = prompt("Enter admin username:");
+    if (username === null) return; // User clicked Cancel
+
+    const password = prompt("Enter admin password:");
+    if (password === null) return; // User clicked Cancel
+
+    if (username === "123" && password === "123") {
+      navigate("/admin/dashboard");
+    } else {
+      alert("Invalid credentials!");
+    }
+  };
+
+  return (
+    <nav className="bg-white shadow-lg">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex justify-between">
+          <div className="flex space-x-7">
+            <div>
+              <Link to="/" className="flex items-center py-4 px-2">
+                <span className="font-bold text-gray-700 text-xl">
+                  Badimalika School
+                </span>
+              </Link>
             </div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    <div className="hidden md:flex space-x-8">
-                        <Link className="hover:text-blue-600 font-medium" to="/">
-                            Home
-                        </Link>
-                        <Link className="hover:text-blue-600 font-medium" to="/about-us">
-                            About Us
-                        </Link>
-                        <div className="relative group">
-                            <button className="flex items-center space-x-1 hover:text-blue-600 font-medium">
-                                <span>Academics</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M5.293 7.707a1 1 0 011.414 0L10 11.414l3.293-3.707a1 1 0 011.414 0z" clipRule="evenodd" />
-                                </svg>
-                            </button>
-                            <div className="absolute left-0 mt-2 bg-white text-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Link className="block px-4 py-2 hover:bg-gray-100" to="/academics/curriculum">
-                                    Curriculum
-                                </Link>
-                                <Link className="block px-4 py-2 hover:bg-gray-100" to="/academics/faculty">
-                                    Faculty
-                                </Link>
-                                <Link className="block px-4 py-2 hover:bg-gray-100" to="/academics/admission">
-                                    Admission
-                                </Link>
-                            </div>
-                        </div>
-                        <Link className="hover:text-blue-600 font-medium" to="/contact">
-                            Contact
-                        </Link>
-                    </div>
-                    <div className="md:hidden">
-                        <button
-                            id="mobile-menu-btn"
-                            className="text-gray-800 focus:outline-none"
-                            onClick={toggleMobileMenu}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+            <div className="hidden md:flex items-center space-x-1">
+              <Link
+                to="/"
+                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
+              >
+                Home
+              </Link>
+              <div className="relative">
+                <button
+                  onClick={toggleDropdown}
+                  className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300 flex items-center"
+                >
+                  Academics
+                  <svg
+                    className="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                {isDropdownOpen && (
+                  <div className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 w-48">
+                    <Link
+                      to="/academics/curriculum"
+                      className="block px-4 py-2 text-gray-500 hover:text-blue-500"
+                    >
+                      Curriculum
+                    </Link>
+                    <Link
+                      to="/academics/faculty"
+                      className="block px-4 py-2 text-gray-500 hover:text-blue-500"
+                    >
+                      Faculty
+                    </Link>
+                    <Link
+                      to="/academics/admission"
+                      className="block px-4 py-2 text-gray-500 hover:text-blue-500"
+                    >
+                      Admission
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <Link
+                to="/blog"
+                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
+              >
+                Blog
+              </Link>
+              <Link
+                to="/about-us"
+                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
+              >
+                About Us
+              </Link>
+              <Link
+                to="/contact"
+                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
+              >
+                Contact
+              </Link>
             </div>
-            <div id="mobile-menu" className="hidden md:hidden bg-white shadow-lg">
-                <Link className="block px-4 py-2 hover:bg-gray-100" to="/" onClick={toggleMobileMenu}>
-                    Home
-                </Link>
-                <Link className="block px-4 py-2 hover:bg-gray-100" to="/about-us" onClick={toggleMobileMenu}>
-                    About Us
-                </Link>
-                <div className="relative">
-                    <button id="mobile-academics-btn" className="w-full flex justify-between px-4 py-2 hover:bg-gray-100" onClick={() => toggleDropdown("mobile-academics")}>
-                        <span>Academics</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M5.293 7.707a1 1 0 011.414 0L10 11.414l3.293-3.707a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                    </button>
-                    <div id="mobile-academics" className="hidden bg-gray-100">
-                        <Link className="block px-4 py-2 hover:bg-gray-200" to="/academics/curriculum" onClick={toggleMobileMenu}>
-                            Curriculum
-                        </Link>
-                        <Link className="block px-4 py-2 hover:bg-gray-200" to="/academics/faculty" onClick={toggleMobileMenu}>
-                            Faculty
-                        </Link>
-                        <Link className="block px-4 py-2 hover:bg-gray-200" to="/academics/admission" onClick={toggleMobileMenu}>
-                            Admission
-                        </Link>
-                    </div>
-                </div>
-                <Link className="block px-4 py-2 hover:bg-gray-100" to="/contact" onClick={toggleMobileMenu}>
-                    Contact
-                </Link>
-            </div>
-        </nav>
-    );
+          </div>
+          <div className="hidden md:flex items-center space-x-3">
+            <Link
+              to="/student-portal"
+              className="py-2 px-4 text-gray-500 hover:text-blue-500 transition duration-300"
+            >
+              Student Portal
+            </Link>
+            <Link
+              to="/teacher-portal"
+              className="py-2 px-4 text-gray-500 hover:text-blue-500 transition duration-300"
+            >
+              Teacher Portal
+            </Link>
+            <button
+              onClick={handleAdminLogin}
+              className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+            >
+              Admin Panel
+            </button>
+          </div>
+          <div className="md:hidden flex items-center">
+            <button onClick={toggleMobileMenu} className="outline-none mobile-menu-button">
+              <svg
+                className="w-6 h-6 text-gray-500 hover:text-blue-500"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
+        <Link
+          to="/"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Home
+        </Link>
+        <Link
+          to="/academics/curriculum"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Curriculum
+        </Link>
+        <Link
+          to="/academics/faculty"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Faculty
+        </Link>
+        <Link
+          to="/academics/admission"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Admission
+        </Link>
+        <Link
+          to="/blog"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Blog
+        </Link>
+        <Link
+          to="/about-us"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          About Us
+        </Link>
+        <Link
+          to="/contact"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Contact
+        </Link>
+        <Link
+          to="/student-portal"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Student Portal
+        </Link>
+        <Link
+          to="/teacher-portal"
+          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Teacher Portal
+        </Link>
+        <button
+          onClick={handleAdminLogin}
+          className="block w-full text-left py-2 px-4 text-sm bg-blue-500 text-white hover:bg-blue-600"
+        >
+          Admin Panel
+        </button>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;
