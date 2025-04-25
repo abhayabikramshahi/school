@@ -3,6 +3,7 @@ import BlogManagement from './AdminPanel/BlogManagement'
 import UserManagement from './AdminPanel/UserManagement'
 import Dashboard from './AdminPanel/Dashboard'
 import Home from '../Pages/Home'
+import VacancyNoticeUploader from './AdminPanel/Vacancy-Notice-Uploader'
 function AdminPanel() {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -45,6 +46,12 @@ function AdminPanel() {
                 >
                   Class Progress
                 </Link>
+                <Link
+                  to="/admin/vacancy-notice-uploader"
+                  className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >
+                  Vacancy Notice Uploader
+                </Link>
               </div>
             </div>
           </div>
@@ -59,6 +66,9 @@ function AdminPanel() {
           <Route path="/blog" element={<BlogManagement />} />
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Dashboard />} />
+       
+          <Route path="/vacancy-notice-uploader" element={<VacancyNoticeUploader />} />
+          {/* Add more routes as needed */}
         </Routes>
       </div>
     </div>
