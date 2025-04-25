@@ -109,6 +109,18 @@ const Navbar = () => {
               >
                 Contact
               </Link>
+              <Link
+          to="/notice"
+          className="block py-2 px-4 text-sm text-gray-500  hover:text-gray-500"
+        >
+          Notice
+        </Link>
+        <Link
+          to="/vacancy"
+          className="block py-2 px-4 text-sm text-gray-500  hover:text-gray-500"
+        >
+          Vacancy
+        </Link>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-3">
@@ -180,8 +192,21 @@ const Navbar = () => {
           Blog
         </Link>
         <Link
-          to="/about-us"
+          to="/notice"
           className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
+        >
+          Notice
+        </Link>
+        <Link
+          to="/vacancy"
+          className="block py-2 px-4 text-sm text-gray-500  hover:text-white"
+        >
+          Vacancy
+        </Link>
+        
+        <Link
+          to="/about-us"
+          className="block py-2 px-4 text-sm text-gray-500  hover:text-white"
         >
           About Us
         </Link>

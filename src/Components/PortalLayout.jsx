@@ -25,6 +25,7 @@ const PortalLayout = ({ children }) => {
                                     </svg>
                                     Back to Website
                                 </Link>
+                        
                             </nav>
                         </div>
                         <div className="flex-shrink-0 flex border-t border-blue-700 p-4">

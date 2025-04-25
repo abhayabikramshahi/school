@@ -13,6 +13,8 @@ import TeacherPortal from "./Pages/TeacherPortal"
 import Blog from "./Pages/Blog"
 import BlogPost from "./Pages/BlogPost"
 import AdminPanel from "./Pages/AdminPanel"
+import Notice from './Pages/Notices' 
+import Vacancy from "./Pages/Vacancy"
 
 function App() {
   const location = useLocation();
@@ -46,6 +48,8 @@ function App() {
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/admin/*" element={<AdminPanel />} />
         <Route path="/fotter" element={<Fotter />} />
+        <Route path="/notice" element={<Notice />} />
+        <Route path="/vacancy" element={<Vacancy />} />
 
       </Routes>
       {!isPortalPage && <Fotter />}
