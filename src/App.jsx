@@ -15,6 +15,9 @@ import BlogPost from "./Pages/BlogPost"
 import AdminPanel from "./Pages/AdminPanel"
 import Notice from './Pages/Notices' 
 import Vacancy from "./Pages/Vacancy"
+import Header from "./Components/Header"
+import TeacherProfile from './components/TeacherProfile';
+import Developer from "./Pages/Developer"
 
 function App() {
   const location = useLocation();
@@ -23,6 +26,7 @@ function App() {
 
   return (
     <>
+      {!isPortalPage && <Header />}
       {!isPortalPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -50,6 +54,8 @@ function App() {
         <Route path="/fotter" element={<Fotter />} />
         <Route path="/notice" element={<Notice />} />
         <Route path="/vacancy" element={<Vacancy />} />
+        <Route path="/faculty/profile/:profileLink" element={<TeacherProfile />} />
+        <Route path="/developer" element={<Developer />} />
 
       </Routes>
       {!isPortalPage && <Fotter />}

@@ -6,235 +6,139 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleMobileMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const toggleMobileMenu = () => setIsOpen(!isOpen);
+  const closeMobileMenu = () => setIsOpen(false);
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+  const closeDropdown = () => setIsDropdownOpen(false);
 
   const handleAdminLogin = (e) => {
     e.preventDefault();
     const username = prompt("Enter admin username:");
-    if (username === null) return; // User clicked Cancel
-
+    if (username === null) return;
     const password = prompt("Enter admin password:");
-    if (password === null) return; // User clicked Cancel
+    if (password === null) return;
 
     if (username === "123" && password === "123") {
       navigate("/admin/dashboard");
+      closeMobileMenu();
+      closeDropdown();
     } else {
       alert("Invalid credentials!");
     }
   };
 
+  const handleLinkClick = () => {
+    closeMobileMenu();
+    closeDropdown();
+  };
+
   return (
-    <nav className="bg-white shadow-lg">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between">
-          <div className="flex space-x-7">
-            <div>
-              <Link to="/" className="flex items-center py-4 px-2">
-                <span className="font-bold text-gray-700 text-xl">
-                  Badimalika School
-                </span>
-              </Link>
-            </div>
-            <div className="hidden md:flex items-center space-x-1">
-              <Link
-                to="/"
-                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
-              >
-                Home
-              </Link>
-              <div className="relative">
-                <button
-                  onClick={toggleDropdown}
-                  className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300 flex items-center"
-                >
-                  Academics
-                  <svg
-                    className="w-4 h-4 ml-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                {isDropdownOpen && (
-                  <div className="absolute top-full left-0 bg-white shadow-lg rounded-lg py-2 w-48">
-                    <Link
-                      to="/academics/curriculum"
-                      className="block px-4 py-2 text-gray-500 hover:text-blue-500"
-                    >
-                      Curriculum
-                    </Link>
-                    <Link
-                      to="/academics/faculty"
-                      className="block px-4 py-2 text-gray-500 hover:text-blue-500"
-                    >
-                      Faculty
-                    </Link>
-                    <Link
-                      to="/academics/admission"
-                      className="block px-4 py-2 text-gray-500 hover:text-blue-500"
-                    >
-                      Admission
-                    </Link>
-                  </div>
-                )}
+    <nav className="bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-lg  w-full z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        {/* LOGO */}
+        <Link to="/" onClick={handleLinkClick} className="text-2xl sm:text-3xl font-bold tracking-tight hover:opacity-90">
+          Badimalika <span className="text-yellow-400">School</span>
+        </Link>
+
+        {/* DESKTOP MENU */}
+        <div className="hidden md:flex items-center space-x-6 font-medium text-base">
+          <Link to="/" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Home</Link>
+
+          <div className="relative">
+            <button
+              onClick={toggleDropdown}
+              className="flex items-center gap-1 hover:text-yellow-300 transition-colors duration-200 focus:outline-none"
+            >
+              Academics
+              <svg className={`w-4 h-4 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-10 left-0 bg-white text-gray-800 rounded-lg shadow-xl w-48 overflow-hidden">
+                <Link to="/academics/curriculum" onClick={handleLinkClick} className="block px-4 py-3 text-sm hover:bg-gray-100 transition-colors duration-200">Curriculum</Link>
+                <Link to="/academics/faculty" onClick={handleLinkClick} className="block px-4 py-3 text-sm hover:bg-gray-100 transition-colors duration-200">Faculty</Link>
+                <Link to="/academics/admission" onClick={handleLinkClick} className="block px-4 py-3 text-sm hover:bg-gray-100 transition-colors duration-200">Admission</Link>
+                <Link to="/developer" onClick={handleLinkClick} className="block px-4 py-3 text-sm hover:bg-gray-100">Developer</Link>
               </div>
-              <Link
-                to="/blog"
-                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
-              >
-                Blog
-              </Link>
-              <Link
-                to="/about-us"
-                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
-              >
-                About Us
-              </Link>
-              <Link
-                to="/contact"
-                className="py-4 px-2 text-gray-500 hover:text-blue-500 transition duration-300"
-              >
-                Contact
-              </Link>
-              <Link
-          to="/notice"
-          className="block py-2 px-4 text-sm text-gray-500  hover:text-gray-500"
-        >
-          Notice
-        </Link>
-        <Link
-          to="/vacancy"
-          className="block py-2 px-4 text-sm text-gray-500  hover:text-gray-500"
-        >
-          Vacancy
-        </Link>
-            </div>
+            )}
           </div>
-          <div className="hidden md:flex items-center space-x-3">
-            <Link
-              to="/student-portal"
-              className="py-2 px-4 text-gray-500 hover:text-blue-500 transition duration-300"
+
+          <Link to="/blog" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Blog</Link>
+          <Link to="/about-us" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">About Us</Link>
+          <Link to="/contact" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Contact</Link>
+          <Link to="/notice" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Notice</Link>
+          <Link to="/vacancy" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Vacancy</Link>
+         
+        </div>
+
+        {/* ACTION BUTTONS */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link to="/student-portal" onClick={handleLinkClick} className="text-sm hover:text-yellow-300 transition-colors duration-200">Student Portal</Link>
+          <Link to="/teacher-portal" onClick={handleLinkClick} className="text-sm hover:text-yellow-300 transition-colors duration-200">Teacher Portal</Link>
+          <button
+            onClick={handleAdminLogin}
+            className="bg-yellow-400 text-blue-900 font-semibold text-sm py-2 px-4 rounded-lg hover:bg-yellow-500 transition-colors duration-200"
+          >
+            Admin Panel
+          </button>
+        </div>
+
+        {/* MOBILE MENU BUTTON */}
+        <div className="md:hidden flex items-center">
+          <button onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
+            <svg
+              className="w-7 h-7 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
             >
-              Student Portal
-            </Link>
-            <Link
-              to="/teacher-portal"
-              className="py-2 px-4 text-gray-500 hover:text-blue-500 transition duration-300"
-            >
-              Teacher Portal
-            </Link>
+              <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* MOBILE MENU */}
+      {isOpen && (
+        <div className="md:hidden bg-blue-700 text-white font-medium text-base">
+          <div className="space-y-3 py-4 px-6">
+            <Link to="/" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Home</Link>
+            <div>
+              <button
+                onClick={toggleDropdown}
+                className="w-full text-left flex items-center justify-between hover:text-yellow-300 transition-colors duration-200"
+              >
+                Academics
+                <svg className={`w-4 h-4 transform transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 9l-7 7-7-7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              {isDropdownOpen && (
+                <div className="pl-4 space-y-2 mt-2">
+                  <Link to="/academics/curriculum" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Curriculum</Link>
+                  <Link to="/academics/faculty" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Faculty</Link>
+                  <Link to="/academics/admission" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Admission</Link>
+                </div>
+              )}
+            </div>
+            <Link to="/blog" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Blog</Link>
+            <Link to="/notice" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Notice</Link>
+            <Link to="/vacancy" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Vacancy</Link>
+            <Link to="/about-us" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">About Us</Link>
+            <Link to="/contact" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Contact</Link>
+            <Link to="/student-portal" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Student Portal</Link>
+            <Link to="/teacher-portal" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Teacher Portal</Link>
             <button
               onClick={handleAdminLogin}
-              className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+              className="w-full text-left py-2 text-yellow-400 hover:text-yellow-500 transition-colors duration-200"
             >
               Admin Panel
             </button>
           </div>
-          <div className="md:hidden flex items-center">
-            <button onClick={toggleMobileMenu} className="outline-none mobile-menu-button">
-              <svg
-                className="w-6 h-6 text-gray-500 hover:text-blue-500"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </div>
         </div>
-      </div>
-      <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
-        <Link
-          to="/"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Home
-        </Link>
-        <Link
-          to="/academics/curriculum"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Curriculum
-        </Link>
-        <Link
-          to="/academics/faculty"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Faculty
-        </Link>
-        <Link
-          to="/academics/admission"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Admission
-        </Link>
-        <Link
-          to="/blog"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Blog
-        </Link>
-        <Link
-          to="/notice"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Notice
-        </Link>
-        <Link
-          to="/vacancy"
-          className="block py-2 px-4 text-sm text-gray-500  hover:text-white"
-        >
-          Vacancy
-        </Link>
-        
-        <Link
-          to="/about-us"
-          className="block py-2 px-4 text-sm text-gray-500  hover:text-white"
-        >
-          About Us
-        </Link>
-        <Link
-          to="/contact"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Contact
-        </Link>
-        <Link
-          to="/student-portal"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Student Portal
-        </Link>
-        <Link
-          to="/teacher-portal"
-          className="block py-2 px-4 text-sm text-gray-500 hover:bg-blue-500 hover:text-white"
-        >
-          Teacher Portal
-        </Link>
-        <button
-          onClick={handleAdminLogin}
-          className="block w-full text-left py-2 px-4 text-sm bg-blue-500 text-white hover:bg-blue-600"
-        >
-          Admin Panel
-        </button>
-      </div>
+      )}
     </nav>
   );
 };
