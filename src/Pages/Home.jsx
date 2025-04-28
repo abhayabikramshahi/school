@@ -9,8 +9,8 @@ import "swiper/css/pagination";
 import SEE from "../hero-images/see-2081.png";
 import Office from "../hero-images/office.png";
 import Teacher from "../hero-images/teachers.png";
-import MordenClassroom from "../some-img-imgs/morden-class.png"; 
-import AdvanceLibary from "../some-img-imgs/advanced-libary.png"; 
+import MordenClassroom from "../some-img-imgs/morden-class.png";
+import AdvanceLibary from "../some-img-imgs/advanced-libary.png";
 import Sports from "../some-img-imgs/sports.png";
 
 const Home = () => {
@@ -32,7 +32,7 @@ const Home = () => {
             <SwiperSlide key={idx}>
               <div className="relative w-full h-full">
                 <img
-                  src={img}
+                  src={img} loading="lazy"
                   alt={`Slide ${idx + 1}`}
                   className="w-full h-[70vh] sm:h-[90vh] object-cover brightness-75"
                 />
@@ -168,14 +168,15 @@ const Home = () => {
 
       {/* Scholarship Admission Section */}
       <section className="py-16 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-left">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Apply for Scholarship Admission
           </h2>
-          <p className="text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg leading-relaxed mb-8 text-left">
             We offer merit-based scholarships to support talented students. Take
             the first step toward a brighter future by applying today!
           </p>
+
           <Link
             to="/scholarship"
             className="inline-block bg-white text-blue-600 font-semibold py-3 px-6 rounded-lg hover:bg-gray-100 transition-all duration-300"
@@ -185,37 +186,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Achievements */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-12">
-            Our Achievements
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              "Top Regional School",
-              "Academic Excellence",
-              "100+ Awards Won",
-              "Trusted by Parents",
-            ].map((achievement, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-white rounded-lg shadow-md hover:scale-105 transition-all duration-300"
-              >
-                <div className="text-4xl text-blue-600 mb-4">
-                  <i className="fas fa-award"></i>
-                </div>
-                <h3 className="font-semibold text-xl text-gray-800">
-                  {achievement}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <Fotter />
     </>
   );
 };

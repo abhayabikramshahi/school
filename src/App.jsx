@@ -18,6 +18,13 @@ import Vacancy from "./Pages/Vacancy"
 import Header from "./Components/Header"
 import TeacherProfile from './components/TeacherProfile';
 import Developer from "./Pages/Developer"
+import Scholarship from "./Scholarship"
+import CreateAssignment from "./Pages/CreateAssignment"
+import StudentsCard from "./Components/StudentsCard"
+import ClassesCard from "./Components/ClassesCard"
+import AssignmentsCard from "./Components/AssignmentsCard"
+import Grades from "./Pages/Grades"
+
 
 function App() {
   const location = useLocation();
@@ -56,6 +63,13 @@ function App() {
         <Route path="/vacancy" element={<Vacancy />} />
         <Route path="/faculty/profile/:profileLink" element={<TeacherProfile />} />
         <Route path="/developer" element={<Developer />} />
+        <Route path="/scholarship" element={<Scholarship />} />
+        <Route path="/create-assignment" element={<CreateAssignment />} />
+        <Route path="/students-card" element={<StudentsCard />} />
+        <Route path="/classes-card" element={<ClassesCard />} />
+        <Route path="/assignments-card" element={<AssignmentsCard />} />
+        <Route path="/grades" element={<Grades />} />
+        {/* Add more routes as needed */}
 
       </Routes>
       {!isPortalPage && <Fotter />}
