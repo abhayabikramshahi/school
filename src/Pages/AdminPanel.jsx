@@ -22,7 +22,6 @@ function AdminPanel() {
                 <NavLink to="dashboard" label="Dashboard" />
                 <NavLink to="users" label="User Management" />
                 <NavLink to="blog" label="Blog Management" />
-                <NavLink to="class-progress" label="Class Progress" />
                 <NavLink to="vacancy-notice-uploader" label="Vacancy Notice Uploader" />
                 <NavLink to="student-attendance" label="Student Attendance" />
               </div>
@@ -37,8 +36,6 @@ function AdminPanel() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<UserManagement />} />
           <Route path="blog" element={<BlogManagement />} />
-          {/* Placeholder if you plan to add Class Progress later */}
-          {/* <Route path="class-progress" element={<ClassProgress />} /> */}
           <Route path="vacancy-notice-uploader" element={<VacancyNoticeUploader />} />
           <Route path="student-attendance" element={<StudentAttendance />} />
 

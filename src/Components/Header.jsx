@@ -63,10 +63,22 @@ const Navbar = () => {
               >
                 Teacher Portal
               </Link>
+
+              {/* 🔐 Admin Portal with ID & Password Prompt */}
               <Link
-                to="/admin"
+                to="#"
                 className="block px-4 py-2 hover:bg-gray-100"
-                onClick={() => setDropdownOpen(false)}
+                onClick={() => {
+                  setDropdownOpen(false);
+                  const id = prompt("Enter Admin ID:");
+                  const password = prompt("Enter Password:");
+                  if (id === "123" && password === "123") {
+                    alert("Successfully entered Admin Panel");
+                    window.location.href = "/admin"; // Redirect
+                  } else {
+                    alert("Invalid ID or Password!");
+                  }
+                }}
               >
                 Admin Portal
               </Link>
