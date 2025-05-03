@@ -48,7 +48,7 @@ const Navbar = () => {
 
           {/* Dropdown menu */}
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-10">
+            <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-[99]">
               <Link
                 to="/student-portal"
                 className="block px-4 py-2 hover:bg-gray-100"
