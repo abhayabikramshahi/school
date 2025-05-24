@@ -46,7 +46,7 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+        {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center text-white">
@@ -64,26 +64,26 @@ const AboutUs = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Mission */}
+          {/* Mission */}
             <div className="lg:w-1/2">
               <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-1 transition-all duration-300">
                 <div className="text-4xl mb-4">🎯</div>
                 <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Mission</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  To foster academic excellence and personal growth by providing a dynamic learning environment
-                  where students are nurtured to realize their full potential and contribute to society meaningfully.
-                </p>
+              To foster academic excellence and personal growth by providing a dynamic learning environment
+              where students are nurtured to realize their full potential and contribute to society meaningfully.
+            </p>
               </div>
-            </div>
-            {/* Vision */}
+          </div>
+          {/* Vision */}
             <div className="lg:w-1/2">
               <div className="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-1 transition-all duration-300">
                 <div className="text-4xl mb-4">👁️</div>
                 <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Vision</h2>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  To be a leading institution in Nepal that develops confident, innovative, and globally-aware
-                  citizens ready to meet future challenges.
-                </p>
+              To be a leading institution in Nepal that develops confident, innovative, and globally-aware
+              citizens ready to meet future challenges.
+            </p>
               </div>
             </div>
           </div>
@@ -157,12 +157,12 @@ const AboutUs = () => {
                   {achievement.title}
                 </h3>
                 <p className="text-gray-600">{achievement.description}</p>
-              </div>
+            </div>
             ))}
           </div>
         </div>
       </section>
-
+  
       {/* Faculty Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -182,19 +182,19 @@ const AboutUs = () => {
                     className="w-full h-64 object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                </div>
+          </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-2">
                     {teacher.name}
                   </h3>
                   <p className="text-gray-600">{teacher.role}</p>
-                </div>
-              </div>
-            ))}
           </div>
+          </div>
+            ))}
         </div>
-      </section>
-
+      </div>
+    </section>
+  
       {/* Call to Action */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

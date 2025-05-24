@@ -130,7 +130,7 @@ const Notices = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
   );
 };
 
