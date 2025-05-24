@@ -4,7 +4,7 @@ import Navbar from "./Components/Navbar"
 import Curriculum from "./Pages/Curriculum"
 import Faculty from "./Pages/Faculty"
 import Admission from "./Pages/Admission"
-import Sports from "./Pages/Sports"
+import Gallery from "./Pages/Gallery"
 import AboutUs from "./Pages/AboutUs"
 import ContactUs from "./Pages/ContactUs"
 import Fotter from "./Components/Fotter"
@@ -44,7 +44,7 @@ function App() {
           <Route path="admission" element={<Admission />} />
         </Route>
         <Route path="/activities">
-          <Route path="sports" element={<Sports />} />
+       
           <Route path="clubs" element={<Admission />} />
           <Route path="events" element={<Admission />} />
           <Route path="Notices" element={<Admission />} />
@@ -65,12 +65,14 @@ function App() {
         <Route path="/faculty/profile/:profileLink" element={<TeacherProfile />} />
         <Route path="/developer" element={<Developer />} />
         <Route path="/scholarship" element={<Scholarship />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/create-assignment" element={<CreateAssignment />} />
         <Route path="/students-card" element={<StudentsCard />} />
         <Route path="/classes-card" element={<ClassesCard />} />
         <Route path="/assignments-card" element={<AssignmentsCard />} />
         <Route path="/grades" element={<Grades />} />
         <Route path="/developer/abhaya" element={<AbhayaProfile />} />
+
         {/* Add more routes as needed */}
 
       </Routes>

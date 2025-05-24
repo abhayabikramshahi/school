@@ -42,81 +42,90 @@ const VacancyNoticeUploader = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black px-6 py-10">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-semibold mb-8 text-center">
+    <div className="min-h-screen bg-gray-50 text-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">
           Upload {uploadType === 'vacancy' ? 'Vacancy' : 'Notice'}
-        </h1>
+        </h2>
 
-        <div className="flex justify-center gap-4 mb-8">
-          <button
-            onClick={() => handleTypeChange('vacancy')}
-            className={`px-5 py-2.5 rounded-md font-medium transition-all ${
-              uploadType === 'vacancy'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-black hover:bg-gray-200'
-            }`}
-          >
-            Vacancy
-          </button>
-          <button
-            onClick={() => handleTypeChange('notice')}
-            className={`px-5 py-2.5 rounded-md font-medium transition-all ${
-              uploadType === 'notice'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-black hover:bg-gray-200'
-            }`}
-          >
-            Notice
-          </button>
+        <div className="flex justify-center gap-4 mb-6">
+          {['vacancy', 'notice'].map((type) => (
+            <button
+              key={type}
+              onClick={() => handleTypeChange(type)}
+              className={`px-6 py-2 rounded-full font-semibold text-sm transition-all border ${
+                uploadType === type
+                  ? 'bg-blue-600 text-white border-blue-600 shadow-md'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border-gray-300'
+              }`}
+            >
+              {type.charAt(0).toUpperCase() + type.slice(1)}
+            </button>
+          ))}
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <input
-            type="text"
-            placeholder="Title (optional)"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg"
-          />
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="block text-sm font-medium mb-1">Title</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter title (optional)"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-          <textarea
-            placeholder="Description (optional)"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            rows={4}
-            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg resize-none"
-          />
+          <div>
+            <label className="block text-sm font-medium mb-1">Description</label>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Enter description (optional)"
+              rows={4}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
 
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            onChange={handleImageChange}
-            className="w-full text-black file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:bg-white file:text-black hover:file:bg-gray-100"
-          />
+          <div>
+            <label className="block text-sm font-medium mb-1">Upload Images</label>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleImageChange}
+              className="block w-full text-sm text-gray-600
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-md file:border-0
+                file:text-sm file:font-semibold
+                file:bg-blue-50 file:text-blue-700
+                hover:file:bg-blue-100"
+            />
+          </div>
 
-          {/* Side-by-side preview */}
           {images.length > 0 && (
-            <div className="flex gap-4 mt-4 overflow-x-auto pb-2">
-              {images.map((img, idx) => (
-                <div
-                  key={idx}
-                  className="min-w-[120px] h-[100px] rounded-md border border-gray-300 overflow-hidden flex-shrink-0"
-                >
-                  <img
-                    src={img.preview}
-                    alt={`preview-${idx}`}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-              ))}
+            <div className="mt-4">
+              <p className="mb-2 text-sm font-medium text-gray-600">Preview:</p>
+              <div className="flex gap-3 overflow-x-auto pb-1">
+                {images.map((img, idx) => (
+                  <div
+                    key={idx}
+                    className="min-w-[100px] h-[80px] rounded-lg border border-gray-300 overflow-hidden"
+                  >
+                    <img
+                      src={img.preview}
+                      alt={`preview-${idx}`}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-all"
+            className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold text-lg hover:bg-blue-700 transition duration-200"
           >
             Upload {uploadType === 'vacancy' ? 'Vacancy' : 'Notice'}
           </button>

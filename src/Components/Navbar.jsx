@@ -49,6 +49,7 @@ const Navbar = () => {
           </div>
 
           <Link to="/blog" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Blog</Link>
+          <Link to="/gallery" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Gallery</Link>
           <Link to="/about-us" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">About Us</Link>
           <Link to="/contact" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Contact</Link>
           <Link to="/notice" onClick={handleLinkClick} className="hover:text-yellow-300 transition-colors duration-200">Notice</Link>
@@ -95,6 +96,7 @@ const Navbar = () => {
               )}
             </div>
             <Link to="/blog" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Blog</Link>
+            <Link to="/gallery" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Gallery</Link>
             <Link to="/notice" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Notice</Link>
             <Link to="/vacancy" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">Vacancy</Link>
             <Link to="/about-us" onClick={handleLinkClick} className="block hover:text-yellow-300 transition-colors duration-200">About Us</Link>
