@@ -16,7 +16,7 @@ import AdminPanel from "./Pages/AdminPanel"
 import Notice from './Pages/Notices' 
 import Vacancy from "./Pages/Vacancy"
 import Header from "./Components/Header"
-import TeacherProfile from './components/TeacherProfile';
+import TeacherProfile from './Components/TeacherProfile';
 import Developer from "./Pages/Developer"
 import Scholarship from "./Scholarship"
 import CreateAssignment from "./Pages/CreateAssignment"
